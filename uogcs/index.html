@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Homework</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="src/styles.css" />
+
+    <script
+      src="https://kit.fontawesome.com/cda82b6e90.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="location">
+        <div class="row">
+          <div class="col-6">
+            <form id="weather-search-bar">
+              <div class="input-group">
+                <input
+                  type="search"
+                  placeholder="Type a city.."
+                  autofocus="off"
+                  class="BarStyle"
+                  id="searchBar"
+                />
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button">🔍</button>
+                </span>
+
+                <span class="input-group-btn">
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-outline-secondary"
+                    id="my-location"
+                  >
+                    Current
+                  </button>
+                </span>
+              </div>
+            </form>
+          </div>
+
+          <div class="col-6">
+            <p class="text-right">
+              <button class="my-location" type="submit" id="celcius">
+                ºC
+              </button>
+              <button class="my-location" type="submit" id="fahr">
+                ºF
+              </button>
+            </p>
+          </div>
+        </div>
+        <h1>
+          <span id="nowCity">
+            <strong>Lisbon</strong>
+          </span>
+          <br />
+          <span id="currentDate">
+            Sunday 24 May, 2020
+          </span>
+        </h1>
+        <br />
+
+        <div class="today">
+          <div class="row">
+            <div class="col-6"></div>
+            <div class="col-6">
+              <span id="currentTemp">
+                <strong>27ºC</strong>
+              </span>
+              <br />
+              Mostly sunny
+            </div>
+          </div>
+        </div>
+        <hr />
+
+        <div class="details">
+          <div class="row">
+            <div class="col-4">
+              <span id="high">
+                29ºC
+              </span>
+              <br />
+              <strong>High</strong>
+              <p></p>
+              <span id="low"> 16ºC </span><br />
+              <strong> Low</strong>
+            </div>
+
+            <div class="col-4">
+              <span id="wind"> 11 km/h </span><br />
+              <strong>Wind</strong>
+              <p></p>
+              <span id="rain"> 0% </span><br />
+              <strong>Rain</strong>
+            </div>
+
+            <div class="col-4">
+              <span id="sunrise"> 06:16h </span> <br />
+              <strong>Sunrise</strong>
+              <p></p>
+              <span id="sunset"> 20:49h </span><br />
+              <strong>Sunset</strong>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <br />
+        <h3>
+          Next 5 days
+        </h3>
+        <div class="forecast">
+          <div class="row">
+            <div class="col">
+              <strong id="dayOne"> Mon </strong>
+              <p>25/05</p>
+              <img src="sun.png" alt="" />
+              <div class="temp">28-16ºC</div>
+            </div>
+            <div class="col">
+              <strong id="dayTwo">Tue</strong>
+              <p>26/05</p>
+              <img src="sun.png" alt="" />
+
+              <div class="temp">29-18ºC</div>
+            </div>
+            <div class="col">
+              <strong id="dayThree">Wed</strong>
+              <p>27/05</p>
+              <img src="sun.png" alt="" />
+
+              <div class="temp">30-18ºC</div>
+            </div>
+
+            <div class="col">
+              <strong id="dayFour">Thu</strong>
+              <p>28/05</p>
+              <img src="sun.png" alt="" />
+
+              <div class="temp">28-19ºC</div>
+            </div>
+            <div class="col">
+              <strong id="dayFive">Fri</strong>
+              <p>29/05</p>
+              <img src="sun.png" alt="" />
+              <div class="temp">29-16ºC</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sun">
+        <img src="sun.png" alt="" />
+      </div>
+    </div>
+  </body>
+  <script src="src/index.js"></script>
+</html>
