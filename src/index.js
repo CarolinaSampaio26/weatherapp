@@ -48,6 +48,8 @@ function getWeather(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  celsiusTemperature = response.data.main.temp;
 }
 
 //Date&Time
@@ -92,18 +94,23 @@ function formatDate() {
 formatDate();
 
 //ºF and ºC
-function convertCelsius(event) {
-  event.preventDefault();
-  let temp = document.querySelector("#currentTemp");
-  temp.innerHTML = "18ºC";
-}
-let tempC = document.querySelector("#celcius");
-tempC.addEventListener("click", convertCelsius);
+let fahrLink = document.querySelector("#fahr");
+fahrLink.addEventListener("click", showFahrTemperature);
 
-function convertFahrenheit(event) {
+function showFahrTemperature(event) {
   event.preventDefault();
-  let temp = document.querySelector("#currentTemp");
-  temp.innerHTML = "64ºF";
+  let fahrTemperature = (celsiusTemperature * 9) / 5 + 32;
+  let temperatureElement = document.querySelector("#currentTemp");
+  temperatureElement.innerHTML = Math.round(fahrTemperature);
 }
-let tempF = document.querySelector("#fahr");
-tempF.addEventListener("click", convertFahrenheit);
+
+let celsiusTemperature = null;
+
+let celsiusLink = document.querySelector("#celsius");
+celsiusLink.addEventListener("click", showCelsiusTemperature);
+
+function showCelsiusTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#currentTemp");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
