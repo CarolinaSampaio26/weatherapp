@@ -71,3 +71,7 @@ h3 {
   color: #5b6273;
   font-size: 15px;
 }
+
+#description {
+  text-transform: capitalize;
+}
