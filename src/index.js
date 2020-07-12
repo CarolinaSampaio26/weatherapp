@@ -36,12 +36,6 @@ function getWeather(response) {
   let lowElement = document.querySelector("#low");
   lowElement.innerHTML = Math.round(response.data.main.temp_min);
 
-  let sunriseElement = document.querySelector("#sunrise");
-  sunriseElement.innerHTML = formatDate(response.data.sys.sunrise * 1000);
-
-  let sunsetElement = document.querySelector("#sunset");
-  sunsetElement.innerHTML = formatDate(response.data.sys.sunset * 1000);
-
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
@@ -50,6 +44,28 @@ function getWeather(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
   celsiusTemperature = response.data.main.temp;
+
+  let sunrise = document.querySelector("#sunrise");
+  let theSunrise = new Date(response.data.sys.sunrise * 1000);
+  let sunriseHour = theSunrise.getHours();
+  let sunriseMinute = theSunrise.getMinutes();
+
+  if (sunriseMinute < 10) {
+    sunriseMinute = `0${sunriseMinute}`;
+  }
+
+  sunrise.innerHTML = `${sunriseHour}:${sunriseMinute}`;
+
+  let sunset = document.querySelector("#sunset");
+  let theSunset = new Date(response.data.sys.sunset * 1000);
+  let sunsetHour = theSunset.getHours();
+  let sunsetMinute = theSunset.getMinutes();
+
+  if (sunsetMinute < 10) {
+    sunsetMinute = `0${sunsetMinute}`;
+  }
+
+  sunset.innerHTML = `${sunsetHour}:${sunsetMinute}`;
 }
 
 //Date&Time
