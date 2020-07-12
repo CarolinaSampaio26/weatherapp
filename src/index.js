@@ -19,7 +19,7 @@ function getWeather(response) {
   cityElement.innerHTML = response.data.name;
 
   let temperatureElement = document.querySelector("#currentTemp");
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  temperatureElement.innerHTML = `${Math.round(response.data.main.temp)}º`;
 
   let descriptionElement = document.querySelector("#description");
   descriptionElement.innerHTML = response.data.weather[0].description;
@@ -31,10 +31,10 @@ function getWeather(response) {
   windElement.innerHTML = Math.round(response.data.wind.speed);
 
   let highElement = document.querySelector("#high");
-  highElement.innerHTML = Math.round(response.data.main.temp_max);
+  highElement.innerHTML = `${Math.round(response.data.main.temp_max)}º`;
 
   let lowElement = document.querySelector("#low");
-  lowElement.innerHTML = Math.round(response.data.main.temp_min);
+  lowElement.innerHTML = `${Math.round(response.data.main.temp_min)}º`;
 
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
@@ -44,6 +44,8 @@ function getWeather(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
   celsiusTemperature = response.data.main.temp;
+  celsiusHigh = response.data.main.temp_max;
+  celsiusLow = response.data.main.temp_min;
 
   let sunrise = document.querySelector("#sunrise");
   let theSunrise = new Date(response.data.sys.sunrise * 1000);
@@ -117,7 +119,7 @@ function showFahrTemperature(event) {
   event.preventDefault();
   let fahrTemperature = (celsiusTemperature * 9) / 5 + 32;
   let temperatureElement = document.querySelector("#currentTemp");
-  temperatureElement.innerHTML = Math.round(fahrTemperature);
+  temperatureElement.innerHTML = `${Math.round(fahrTemperature)}º`;
 }
 
 let celsiusTemperature = null;
@@ -128,5 +130,31 @@ celsiusLink.addEventListener("click", showCelsiusTemperature);
 function showCelsiusTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#currentTemp");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+  temperatureElement.innerHTML = `${Math.round(celsiusTemperature)}º`;
+}
+
+let fahrConvertion = document.querySelector("#fahr");
+fahrConvertion.addEventListener("click", showFahrConvertion);
+
+function showFahrConvertion(event) {
+  event.preventDefault();
+  let fahrTemperature = (celsiusHigh * 9) / 5 + 32;
+  let highElement = document.querySelector("#high");
+  highElement.innerHTML = `${Math.round(fahrTemperature)}º`;
+  let fahrsTemperature = (celsiusLow * 9) / 5 + 32;
+  let lowElement = document.querySelector("#low");
+  lowElement.innerHTML = `${Math.round(fahrsTemperature)}º`;
+}
+let celsiusHigh = null;
+let celsiusLow = null;
+
+let celsiusConvertion = document.querySelector("#celsius");
+celsiusLink.addEventListener("click", showCelsiusConvertion);
+
+function showCelsiusConvertion(event) {
+  event.preventDefault();
+  let highElement = document.querySelector("#high");
+  highElement.innerHTML = `${Math.round(celsiusHigh)}º`;
+  let lowElement = document.querySelector("#low");
+  lowElement.innerHTML = `${Math.round(celsiusLow)}º`;
 }

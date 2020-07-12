@@ -54,7 +54,7 @@ h1 {
 
 .sun {
   width: 43%;
-  margin-top: -523px;
+  margin-top: -350px;
   margin-left: 20px;
 }
 
@@ -67,11 +67,11 @@ h1 {
   box-shadow: 1px 1px 3px #bfc2ca;
 }
 
-h3 {
-  color: #5b6273;
-  font-size: 15px;
-}
-
 #description {
   text-transform: capitalize;
+  font-size: 20px;
+}
+
+#currentTemp {
+  font-size: 30px;
 }
