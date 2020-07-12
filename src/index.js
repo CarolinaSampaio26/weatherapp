@@ -1,21 +1,17 @@
 //Change City
-function searchCity(event) {
-  event.preventDefault();
-  let searchCity = document.querySelector("#searchBar");
-  let currentCity = document.querySelector("#nowCity");
+function search(city) {
   let apiKey = "095d1f71575294110288899220c560b0";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchCity.value}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(getWeather);
-
-  if (searchCity.value) {
-    currentCity.innerHTML = `${searchCity.value}, `;
-  } else if (searchCity.value.length === 0) {
-    alert("Please enter a city");
-  }
 }
-
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#searchBar");
+  search(cityInputElement.value);
+}
+search("Lisbon");
 let form = document.querySelector("#weather-search-bar");
-form.addEventListener("submit", searchCity);
+form.addEventListener("submit", handleSubmit);
 
 //Change Temperature
 function getWeather(response) {
